@@ -1,5 +1,5 @@
 type validateTodoDescription = {
-  sucess: boolean;
+  success: boolean;
   errors: string[];
 };
 
@@ -13,7 +13,7 @@ export function validateTodoDescription(
   }
 
   return {
-    sucess: errors.length === 0,
+    success: errors.length === 0,
     errors,
   };
 }
