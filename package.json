@@ -3,10 +3,26 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "next dev --turbopack",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "next lint",
+    "drizzle:generate": "dotenv run -f .env.development -- drizzle-kit generate",
+    "drizzle:migrate": "dotenv run -f .env.development -- drizzle-kit migrate",
+    "dev:test": "dotenv run -f .env.e2e -- next dev",
+    "start:test": "dotenv run -f .env.e2e -- next start",
+    "test": "dotenv run -f .env.test -- vitest run --bail 1",
+    "test:watch": "dotenv run -f .env.test -- vitest --bail 1",
+    "test:unit": "dotenv run -f .env.test -- vitest run --exclude \"src/**/*.{test,e2e}.{ts,tsx}\" --fileParallelism",
+    "test:unit:watch": "dotenv run -f .env.test -- vitest --exclude \"src/**/*.{test,e2e}.{ts,tsx}\" --fileParallelism",
+    "test:int": "dotenv run -f .env.test -- vitest run --exclude \"src/**/*.{spec,e2e}.{ts,tsx}\" --no-file-parallelism",
+    "test:int:watch": "dotenv run -f .env.test -- vitest --exclude \"src/**/*.{spec,e2e}.{ts,tsx}\" --no-file-parallelism",
+    "test:cov": "dotenv run -f .env.test -- vitest run --coverage --no-file-parallelism",
+    "test:e2e": "dotenv run -f .env.e2e -- playwright test",
+    "test:e2e:headed": "dotenv run -f .env.e2e -- playwright test --headed",
+    "test:e2e:debug": "dotenv run -f .env.e2e -- playwright test --debug",
+    "test:e2e:ui": "dotenv run -f .env.e2e -- playwright test --ui",
+    "test:e2e:report": "dotenv run -f .env.e2e -- playwright show-report"
   },
   "dependencies": {
     "better-sqlite3": "^13.0.3",
