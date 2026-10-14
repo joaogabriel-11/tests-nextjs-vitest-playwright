@@ -1,5 +1,19 @@
 {
   "code-runner.executorMap": {
     "typescript": "npx dotenv run -f .env.development -- tsx"
+  },
+  "js/ts.tsdk.path": "node_modules\\typescript\\lib",
+  "files.watcherExclude": {
+    "**/node_modules/**": true,
+    "**/.next/**": true,
+    "**/dist/**": true,
+    "**/coverage/**": true,
+    "**/.git/objects/**": true
+  },
+  "search.exclude": {
+    "**/node_modules": true,
+    "**/.next": true,
+    "**/dist": true,
+    "**/coverage": true
   }
 }
