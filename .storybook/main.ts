@@ -1,0 +1,14 @@
+import type { StorybookConfig } from "@storybook/nextjs-vite";
+import tailwindcss from "@tailwindcss/vite";
+
+const config: StorybookConfig = {
+  stories: ["../src/**/*.stories.@(js|jsx|mjs|ts|tsx)"],
+  addons: [],
+  framework: "@storybook/nextjs-vite",
+  staticDirs: ["../public"],
+  async viteFinal(config) {
+    config.plugins = [...(config.plugins ?? []), tailwindcss()];
+    return config;
+  },
+};
+export default config;
