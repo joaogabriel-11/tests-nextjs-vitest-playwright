@@ -16,7 +16,7 @@ describe("deleteTodoUseCase (integration)", () => {
     const result = await deleteTodoUseCase("");
 
     expect(result).toStrictEqual({
-      errors: ["ID inválido"],
+      errors: ["ID invalido"],
       success: false,
     });
   });
