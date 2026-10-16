@@ -39,6 +39,7 @@
   },
   "devDependencies": {
     "@storybook/addon-docs": "^10.6.2",
+    "@storybook/addon-vitest": "^10.6.2",
     "@storybook/nextjs-vite": "^10.6.2",
     "@tailwindcss/turbopack": "^4",
     "@tailwindcss/vite": "^4.3.3",
@@ -65,6 +66,8 @@
     "tsx": "^4.23.15",
     "typescript": "^5",
     "vite": "^8.3.4",
-    "vitest": "^5.0.3"
+    "vitest": "^5.0.3",
+    "@vitest/browser-playwright": "5.0.3",
+    "playwright": "latest"
   }
 }
