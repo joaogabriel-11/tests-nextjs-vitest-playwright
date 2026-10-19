@@ -5,7 +5,7 @@ import { connection } from "next/server";
 export const instant = false;
 
 export const metadata: Metadata = {
-  title: "Testes com Vitest e Playwrigth",
+  title: "Testes com Vitest e Playwright",
 };
 
 export default async function Home() {
