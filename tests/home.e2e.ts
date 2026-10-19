@@ -95,6 +95,44 @@ test.describe("<Home /> (E2E)", () => {
       const todo2Item = page.getByRole("listitem").filter({ hasText: todo2 });
       await expect(todo2Item).toBeVisible();
     });
+
+    test("should disable the button while creating the TODO", async ({
+      page,
+    }) => {
+      const { btn, input } = getAll(page);
+
+      await input.fill(NEW_TODO_TEXT);
+      await btn.click();
+
+      await expect(getBtnBusy(page)).toBeVisible();
+      await expect(getBtnBusy(page)).toBeDisabled();
+
+      const createdTodo = page
+        .getByRole("listitem")
+        .filter({ hasText: NEW_TODO_TEXT });
+      await expect(createdTodo).toBeVisible();
+
+      await expect(btn).toBeVisible();
+      await expect(btn).toBeEnabled();
+    });
+
+    test("should disable the input while creating the TODO", async ({
+      page,
+    }) => {
+      const { btn, input } = getAll(page);
+
+      await input.fill(NEW_TODO_TEXT);
+      await btn.click();
+
+      await expect(input).toBeDisabled();
+
+      const createdTodo = page
+        .getByRole("listitem")
+        .filter({ hasText: NEW_TODO_TEXT });
+      await expect(createdTodo).toBeVisible();
+
+      await expect(input).toBeEnabled();
+    });
   });
 
   // Exclusão
