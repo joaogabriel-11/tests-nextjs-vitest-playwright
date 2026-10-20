@@ -1,8 +1,8 @@
-import { todoTable } from "@/core/todo/schemas/drizzle-todo-table.schema";
-import { getFullEnv } from "@/env/config";
-import Database from "better-sqlite3";
-import { drizzle } from "drizzle-orm/better-sqlite3";
-import { migrate } from "drizzle-orm/better-sqlite3/migrator";
+import { todoTable } from '@/core/todo/schemas/drizzle-todo-table.schema';
+import { getFullEnv } from '@/env/config';
+import Database from 'better-sqlite3';
+import { drizzle } from 'drizzle-orm/better-sqlite3';
+import { migrate } from 'drizzle-orm/better-sqlite3/migrator';
 
 const makeDrizzle = () => {
   const { databaseFile, currentEnv, drizzleMigrationsFolder } = getFullEnv();
@@ -12,7 +12,7 @@ const makeDrizzle = () => {
     schema: { todo: todoTable },
   });
 
-  if (["test", "e2e"].includes(currentEnv)) {
+  if (['test', 'e2e'].includes(currentEnv)) {
     migrate(db, { migrationsFolder: drizzleMigrationsFolder });
   }
 
@@ -36,6 +36,4 @@ export type DrizzleDatabase = ReturnType<typeof makeDrizzle>;
 
 (async () => {
   const db = globalThis.__DB__;
-
-  console.log(await db.query.todo.findMany());
 })();

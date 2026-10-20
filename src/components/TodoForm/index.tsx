@@ -1,10 +1,10 @@
-"use client";
-import { CreateTodoAction } from "@/core/todo/actions/todo.action.types";
-import { sanitizeStr } from "@/utils/sanitize-str";
-import { useRef, useState, useTransition } from "react";
-import { InputText } from "../InputText";
-import { Button } from "../Button";
-import { CirclePlusIcon } from "lucide-react";
+'use client';
+import { CreateTodoAction } from '@/core/todo/actions/todo.action.types';
+import { sanitizeStr } from '@/utils/sanitize-str';
+import { useRef, useState, useTransition } from 'react';
+import { InputText } from '../InputText';
+import { Button } from '../Button';
+import { CirclePlusIcon } from 'lucide-react';
 
 export type TodoFormProps = {
   action: CreateTodoAction;
@@ -12,7 +12,7 @@ export type TodoFormProps = {
 
 export function TodoForm({ action }: TodoFormProps) {
   const [isPending, startTransition] = useTransition();
-  const [inputError, setInputError] = useState("");
+  const [inputError, setInputError] = useState('');
   const ref = useRef<HTMLInputElement>(null);
 
   function handleCreateTodo(e: React.SubmitEvent<HTMLFormElement>) {
@@ -32,23 +32,23 @@ export function TodoForm({ action }: TodoFormProps) {
         return;
       }
 
-      input.value = "";
-      setInputError("");
+      input.value = '';
+      setInputError('');
     });
   }
 
   return (
-    <form onSubmit={handleCreateTodo} className="flex flex-col flex-1 gap-6">
+    <form onSubmit={handleCreateTodo} className='flex flex-col flex-1 gap-6'>
       <InputText
-        name="description"
-        labelText="Tarefa"
-        placeholder="Digite sua tarefa..."
+        name='description'
+        labelText='Tarefa'
+        placeholder='Digite sua tarefa...'
         disabled={isPending}
         errorMessage={inputError}
         ref={ref}
       />
 
-      <Button type="submit" disabled={isPending}>
+      <Button type='submit' disabled={isPending}>
         <CirclePlusIcon />
         {!isPending && <span>Criar tarefa</span>}
         {isPending && <span>Criando tarefa...</span>}

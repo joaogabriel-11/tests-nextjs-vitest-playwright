@@ -1,13 +1,13 @@
-import type { Preview } from "@storybook/nextjs-vite";
+import type { Preview } from '@storybook/nextjs-vite';
 
-import "../src/app/globals.css";
-import "./storybook.css";
+import '../src/app/globals.css';
+import './storybook.css';
 
 const preview: Preview = {
   parameters: {
     backgrounds: {
       options: {
-        light: { name: "light", value: "#ffffff" },
+        light: { name: 'light', value: '#ffffff' },
       },
     },
     controls: {
@@ -18,9 +18,9 @@ const preview: Preview = {
     },
   },
   initialGlobals: {
-    backgrounds: { value: "light" },
+    backgrounds: { value: 'light' },
   },
-  decorators: [(Story) => <Story />],
+  decorators: [Story => <Story />],
 };
 
 export default preview;

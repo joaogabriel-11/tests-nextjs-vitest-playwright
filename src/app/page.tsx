@@ -1,11 +1,11 @@
-import { TodoContainer } from "@/components/TodoContainer";
-import { Metadata } from "next";
-import { connection } from "next/server";
+import { TodoContainer } from '@/components/TodoContainer';
+import { Metadata } from 'next';
+import { connection } from 'next/server';
 
 export const instant = false;
 
 export const metadata: Metadata = {
-  title: "Testes com Vitest e Playwright",
+  title: 'Testes com Vitest e Playwright',
 };
 
 export default async function Home() {

@@ -1,29 +1,29 @@
-import { join } from "path";
+import { join } from 'path';
 
 const commonKeys = {
-  drizzleSchemaFiles: ["./src/core/todo/schemas/drizzle-todo-table.schema.ts"],
-  drizzleMigrationsFolder: "./src/db/drizzle/migrations",
+  drizzleSchemaFiles: ['./src/core/todo/schemas/drizzle-todo-table.schema.ts'],
+  drizzleMigrationsFolder: './src/db/drizzle/migrations',
 };
 
 const envConfigs = {
   development: {
-    databaseFile: "dev.db.sqlite3",
-    currentEnv: "development",
+    databaseFile: 'dev.db.sqlite3',
+    currentEnv: 'development',
     ...commonKeys,
   },
   production: {
-    databaseFile: "prod.db.sqlite3",
-    currentEnv: "production",
+    databaseFile: 'prod.db.sqlite3',
+    currentEnv: 'production',
     ...commonKeys,
   },
   test: {
-    databaseFile: ".int.test.db.sqlite3",
-    currentEnv: "test",
+    databaseFile: '.int.test.db.sqlite3',
+    currentEnv: 'test',
     ...commonKeys,
   },
   e2e: {
-    databaseFile: "e2e.test.db.sqlite3",
-    currentEnv: "e2e",
+    databaseFile: 'e2e.test.db.sqlite3',
+    currentEnv: 'e2e',
     ...commonKeys,
   },
 } as const;
@@ -44,7 +44,7 @@ export function checkEnv(): AllowedEnvKeys {
   const currentEnv = process.env.CURRENT_ENV;
 
   if (!currentEnv || !isValidEnv(currentEnv)) {
-    throw new Error("Verifique os .env* e os valores em src/env/configs.ts");
+    throw new Error('Verifique os .env* e os valores em src/env/configs.ts');
   }
 
   return currentEnv;

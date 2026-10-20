@@ -1,5 +1,5 @@
-import { sanitizeStr } from "@/utils/sanitize-str";
-import { todoRepository } from "../repositories/default.repository";
+import { sanitizeStr } from '@/utils/sanitize-str';
+import { todoRepository } from '../repositories/default.repository';
 
 export async function deleteTodoUseCase(id: string) {
   const cleanId = sanitizeStr(id);
@@ -7,7 +7,7 @@ export async function deleteTodoUseCase(id: string) {
   if (!cleanId) {
     return {
       success: false,
-      errors: ["ID invalido"],
+      errors: ['ID invalido'],
     };
   }
 

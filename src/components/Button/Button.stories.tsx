@@ -1,6 +1,6 @@
-import { Button } from ".";
-import { HandMetalIcon, StarIcon, SmileIcon } from "lucide-react";
-import type { Meta, StoryObj } from "@storybook/react";
+import { Button } from '.';
+import { HandMetalIcon, StarIcon, SmileIcon } from 'lucide-react';
+import type { Meta, StoryObj } from '@storybook/react';
 
 const iconMap = {
   none: null,
@@ -17,34 +17,34 @@ type ButtonStoryProps = React.ComponentProps<typeof Button> & {
 
 // Usando ButtonStoryProps porque icon não existe no botão
 const meta: Meta<ButtonStoryProps> = {
-  title: "Components/Forms/Button",
+  title: 'Components/Forms/Button',
   component: Button,
   argTypes: {
     icon: {
-      control: { type: "select" },
-      options: ["none", "hand", "star", "smile"],
-      description: "Ícone opcional exibido à esquerda do texto",
+      control: { type: 'select' },
+      options: ['none', 'hand', 'star', 'smile'],
+      description: 'Ícone opcional exibido à esquerda do texto',
       table: {
-        type: { summary: "ReactNode" },
-        defaultValue: { summary: "none" },
+        type: { summary: 'ReactNode' },
+        defaultValue: { summary: 'none' },
       },
     },
     children: {
-      control: "text",
+      control: 'text',
     },
     variant: {
-      name: "Variações",
-      options: ["default", "ghost", "danger"],
-      control: { type: "select" },
+      name: 'Variações',
+      options: ['default', 'ghost', 'danger'],
+      control: { type: 'select' },
     },
     size: {
-      control: { type: "select" },
-      options: ["sm", "md", "lg"],
+      control: { type: 'select' },
+      options: ['sm', 'md', 'lg'],
     },
   },
   decorators: [
-    (Story) => (
-      <div className="max-w-5xl mx-auto p-12">
+    Story => (
+      <div className='max-w-5xl mx-auto p-12'>
         <Story />
       </div>
     ),
@@ -60,7 +60,7 @@ type Story = StoryObj<ButtonStoryProps>;
 const render = ({ icon, children, ...args }: ButtonStoryProps) => (
   <Button {...args}>
     <>
-      {icon !== "none" && iconMap[icon as keyof typeof iconMap]}{" "}
+      {icon !== 'none' && iconMap[icon as keyof typeof iconMap]}{' '}
       <span>{children}</span>
     </>
   </Button>
@@ -68,8 +68,8 @@ const render = ({ icon, children, ...args }: ButtonStoryProps) => (
 
 export const Playground: Story = {
   args: {
-    children: "Texto do botão",
-    icon: "hand",
+    children: 'Texto do botão',
+    icon: 'hand',
   },
   render,
 };
@@ -77,34 +77,34 @@ export const Playground: Story = {
 export const Large: Story = {
   args: {
     ...Playground.args,
-    children: "Click me",
-    icon: "star",
-    size: "lg",
+    children: 'Click me',
+    icon: 'star',
+    size: 'lg',
   },
   render: ({ icon, children, ...args }: ButtonStoryProps) => (
-    <div className="flex gap-6  flex-wrap">
-      <Button {...args} className="flex-1">
+    <div className='flex gap-6  flex-wrap'>
+      <Button {...args} className='flex-1'>
         <>
-          {icon !== "none" && iconMap[icon as keyof typeof iconMap]}{" "}
+          {icon !== 'none' && iconMap[icon as keyof typeof iconMap]}{' '}
           <span>{children}</span>
         </>
       </Button>
 
-      <Button variant="ghost" {...args} className="flex-1">
+      <Button variant='ghost' {...args} className='flex-1'>
         <>
-          {iconMap["hand"]}
+          {iconMap['hand']}
           <span>{children}</span>
         </>
       </Button>
 
-      <Button variant="danger" {...args} className="flex-1">
+      <Button variant='danger' {...args} className='flex-1'>
         <>
-          {iconMap["smile"]}
+          {iconMap['smile']}
           <span>{children}</span>
         </>
       </Button>
 
-      <Button variant="default" {...args} className="flex-1">
+      <Button variant='default' {...args} className='flex-1'>
         Submit
       </Button>
     </div>

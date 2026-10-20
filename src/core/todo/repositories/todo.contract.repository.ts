@@ -1,4 +1,4 @@
-import { Todo, TodoPresenter } from "../schemas/todo.contract";
+import { Todo, TodoPresenter } from '../schemas/todo.contract';
 
 export interface FindAllTodoRepository {
   findAll(): Promise<Todo[]>;

@@ -4,21 +4,21 @@
 // Importa funções do Vitest para usar depois dos testes
 // `afterEach` = executa algo depois de cada teste
 // `expect` = função principal para fazer asserções (testar resultados)
-import { afterEach, expect } from "vitest";
+import { afterEach, expect } from 'vitest';
 
 // Importa a função `cleanup` da Testing Library
 // Ela "limpa" o DOM após cada teste pra garantir que um teste não afete outro
-import { cleanup } from "@testing-library/react";
+import { cleanup } from '@testing-library/react';
 
 // Importa os matchers extras do jest-dom, adaptados pro Vitest
 // Exemplo: `.toBeInTheDocument()`, `.toHaveAttribute()`, etc.
 // Sem isso, o `expect(...).toBeInTheDocument()` daria erro
-import "@testing-library/jest-dom/vitest";
+import '@testing-library/jest-dom/vitest';
 
 // Importa todos os matchers do jest-dom adaptados para Vitest
 // Isso evita warnings relacionados ao act(...) em atualizações do React
 // e garante que matchers como `.toBeInTheDocument()` funcionem corretamente
-import * as matchers from "@testing-library/jest-dom/matchers";
+import * as matchers from '@testing-library/jest-dom/matchers';
 
 // Estende o expect global com os matchers do jest-dom
 // Sem isso, pode aparecer warning do tipo "You might have forgotten to wrap an update in act(...)"

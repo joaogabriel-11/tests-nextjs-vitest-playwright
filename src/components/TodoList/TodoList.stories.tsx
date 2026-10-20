@@ -1,14 +1,14 @@
-import { mockTodos } from "@/core/__tests__/mocks/todos";
-import { TodoList } from ".";
-import type { Meta, StoryObj } from "@storybook/react";
-import { todoActionStoryMock } from "@/core/__tests__/mocks/todo-action-story";
+import { mockTodos } from '@/core/__tests__/mocks/todos';
+import { TodoList } from '.';
+import type { Meta, StoryObj } from '@storybook/react';
+import { todoActionStoryMock } from '@/core/__tests__/mocks/todo-action-story';
 
 const meta: Meta<typeof TodoList> = {
-  title: "Components/Lists/TodoList",
+  title: 'Components/Lists/TodoList',
   component: TodoList,
   decorators: [
-    (Story) => (
-      <div className="max-w-3xl mx-auto p-12">
+    Story => (
+      <div className='max-w-3xl mx-auto p-12'>
         <Story />
       </div>
     ),

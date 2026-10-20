@@ -1,9 +1,9 @@
 import {
   insertTestTodos,
   makeTestTodoRepository,
-} from "@/core/__tests__/utils/make-test-todo-repository";
+} from '@/core/__tests__/utils/make-test-todo-repository';
 
-describe("DrizzleTodoRepository (integration)", () => {
+describe('DrizzleTodoRepository (integration)', () => {
   beforeEach(async () => {
     const { deleteTodoNoWhere } = await makeTestTodoRepository();
     await deleteTodoNoWhere();
@@ -14,28 +14,28 @@ describe("DrizzleTodoRepository (integration)", () => {
     await deleteTodoNoWhere();
   });
 
-  describe("findAll", () => {
-    test("should return an empty array if the table is clean", async () => {
+  describe('findAll', () => {
+    test('should return an empty array if the table is clean', async () => {
       const { repository } = await makeTestTodoRepository();
       const result = await repository.findAll();
       expect(result).toStrictEqual([]);
       expect(result).toHaveLength(0);
     });
 
-    test("should return all TODOs in descending order", async () => {
+    test('should return all TODOs in descending order', async () => {
       const { repository } = await makeTestTodoRepository();
       await insertTestTodos();
       const result = await repository.findAll();
-      expect(result[0].createdAt).toBe("date 4");
-      expect(result[1].createdAt).toBe("date 3");
-      expect(result[2].createdAt).toBe("date 2");
-      expect(result[3].createdAt).toBe("date 1");
-      expect(result[4].createdAt).toBe("date 0");
+      expect(result[0].createdAt).toBe('date 4');
+      expect(result[1].createdAt).toBe('date 3');
+      expect(result[2].createdAt).toBe('date 2');
+      expect(result[3].createdAt).toBe('date 1');
+      expect(result[4].createdAt).toBe('date 0');
     });
   });
 
-  describe("create", () => {
-    test("creates a whole if the data is valid", async () => {
+  describe('create', () => {
+    test('creates a whole if the data is valid', async () => {
       const { repository, todos } = await makeTestTodoRepository();
       const newTodo = await repository.create(todos[0]);
       expect(newTodo).toStrictEqual({
@@ -44,7 +44,7 @@ describe("DrizzleTodoRepository (integration)", () => {
       });
     });
 
-    test("fails if there is the same description in the table", async () => {
+    test('fails if there is the same description in the table', async () => {
       const { repository, todos } = await makeTestTodoRepository();
 
       // Cria um novo todo
@@ -52,19 +52,19 @@ describe("DrizzleTodoRepository (integration)", () => {
 
       // Tenta criar um outro todo com a mesma descrição
       const anotherTodo = {
-        id: "any id",
+        id: 'any id',
         description: todos[0].description,
-        createdAt: "any date",
+        createdAt: 'any date',
       };
       const result = await repository.create(anotherTodo);
 
       expect(result).toStrictEqual({
         success: false,
-        errors: ["Já existe um todo com o ID ou descrição enviados"],
+        errors: ['Já existe um todo com o ID ou descrição enviados'],
       });
     });
 
-    test("fails if there is the same ID in the table", async () => {
+    test('fails if there is the same ID in the table', async () => {
       const { repository, todos } = await makeTestTodoRepository();
 
       // Cria um novo todo
@@ -73,18 +73,18 @@ describe("DrizzleTodoRepository (integration)", () => {
       // Tenta criar um outro todo com o mesmo ID
       const anotherTodo = {
         id: todos[0].id,
-        description: "any description",
-        createdAt: "any date",
+        description: 'any description',
+        createdAt: 'any date',
       };
       const result = await repository.create(anotherTodo);
 
       expect(result).toStrictEqual({
         success: false,
-        errors: ["Já existe um todo com o ID ou descrição enviados"],
+        errors: ['Já existe um todo com o ID ou descrição enviados'],
       });
     });
 
-    test("fails if there is the same ID and Description", async () => {
+    test('fails if there is the same ID and Description', async () => {
       const { repository, todos } = await makeTestTodoRepository();
 
       await repository.create(todos[0]);
@@ -92,19 +92,19 @@ describe("DrizzleTodoRepository (integration)", () => {
       const anotherTodo = {
         id: todos[0].id,
         description: todos[0].description,
-        createdAt: "any date",
+        createdAt: 'any date',
       };
       const result = await repository.create(anotherTodo);
 
       expect(result).toStrictEqual({
         success: false,
-        errors: ["Já existe um todo com o ID ou descrição enviados"],
+        errors: ['Já existe um todo com o ID ou descrição enviados'],
       });
     });
   });
 
-  describe("remove", () => {
-    test("deletes a whole if it exists", async () => {
+  describe('remove', () => {
+    test('deletes a whole if it exists', async () => {
       const { repository, todos } = await makeTestTodoRepository();
       await insertTestTodos();
       const result = await repository.remove(todos[0].id);
@@ -115,13 +115,13 @@ describe("DrizzleTodoRepository (integration)", () => {
       });
     });
 
-    test("Fails to delete if the whole does not exist", async () => {
+    test('Fails to delete if the whole does not exist', async () => {
       const { repository } = await makeTestTodoRepository();
-      const result = await repository.remove("any id");
+      const result = await repository.remove('any id');
 
       expect(result).toStrictEqual({
         success: false,
-        errors: ["Todo não existe"],
+        errors: ['Todo não existe'],
       });
     });
   });
